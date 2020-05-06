@@ -1,11 +1,8 @@
 {
   "name": "github-envs-remove",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/main.js",
   "description": "Remove your all github repository deployments and environments",
-  "engines": {
-    "node": ">=12.0.0"
-  },
   "bin": {
     "github-envs-remove": "dist/main.js"
   },
@@ -14,13 +11,32 @@
     "watch": "tsc -w",
     "start": "node dist/main.js"
   },
-  "author": "Evgeny <redzumi.tao@gmail.com> Bykovskikh",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:redzumi/github-envs-remove.git"
+  },
+  "keywords": [
+    "github",
+    "environments",
+    "tab",
+    "deployments",
+    "repository",
+    "remove",
+    "delete"
+  ],
+  "author": {
+    "name": "Evgeny Bykovskikh",
+    "email": "redzumi.tao@gmail.com"
+  },
   "license": "WTFPL",
   "dependencies": {
-    "@types/node": "^13.13.5",
     "axios": "^0.19.2"
   },
   "devDependencies": {
+    "@types/node": "^13.13.5",
     "typescript": "^3.8.3"
   }
 }
