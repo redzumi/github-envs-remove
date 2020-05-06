@@ -1,42 +1,16 @@
-import { prompt } from 'enquirer';
-
 import api from './api';
 import Deployments from './deployments';
-
-type Answers = {
-  token: string;
-  owner: string;
-  name: string;
-};
-
-const questions = [
-  {
-    type: 'input',
-    name: 'token',
-    message: 'What is your github personal access token?',
-  },
-  {
-    type: 'input',
-    name: 'owner',
-    message: 'What is your repo owner?',
-  },
-  {
-    type: 'input',
-    name: 'name',
-    message: 'Well, what is your repo name?',
-  },
-];
+import { askQuestion } from './utils';
 
 const main = async () => {
-  const answers: Answers = await prompt(questions);
+  const token = await askQuestion('What is your github personal access token?');
+  const owner = await askQuestion('What is your repo owner?');
+  const name = await askQuestion('Well, what is your repo name?');
 
-  console.log(
-    '\x1b[1m%s',
-    `Great, working with ${answers.owner}/${answers.name}...`
-  );
+  console.log('\x1b[1m%s', `Great, working with ${owner}/${name}...\x1b[37m`);
 
-  api.setToken(answers.token);
-  api.setRepository({ owner: answers.owner, name: answers.name });
+  api.setToken(token);
+  api.setRepository({ owner, name });
   api.createInstance();
 
   const deployments = new Deployments();
@@ -44,7 +18,7 @@ const main = async () => {
   await deployments.fetchFromAPI();
   await deployments.deleteAll();
 
-  console.log('\x1b[1m%s', `Done. 🎉`);
+  console.log('\x1b[1m%s', `Done. 🎉\x1b[37m`);
 };
 
 main();

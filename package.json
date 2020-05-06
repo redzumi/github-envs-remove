@@ -10,7 +10,6 @@
     "github-envs-remove": "dist/main.js"
   },
   "scripts": {
-    "postinstall": "npm install --only=production",
     "build": "tsc",
     "watch": "tsc -w",
     "start": "node dist/main.js"
@@ -18,8 +17,8 @@
   "author": "Evgeny <redzumi.tao@gmail.com> Bykovskikh",
   "license": "WTFPL",
   "dependencies": {
-    "axios": "^0.19.2",
-    "enquirer": "^2.3.5"
+    "@types/node": "^13.13.5",
+    "axios": "^0.19.2"
   },
   "devDependencies": {
     "typescript": "^3.8.3"

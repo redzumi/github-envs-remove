@@ -36,45 +36,34 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var enquirer_1 = require("enquirer");
 var api_1 = require("./api");
 var deployments_1 = require("./deployments");
-var questions = [
-    {
-        type: 'input',
-        name: 'token',
-        message: 'What is your github personal access token?',
-    },
-    {
-        type: 'input',
-        name: 'owner',
-        message: 'What is your repo owner?',
-    },
-    {
-        type: 'input',
-        name: 'name',
-        message: 'Well, what is your repo name?',
-    },
-];
+var utils_1 = require("./utils");
 var main = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var answers, deployments;
+    var token, owner, name, deployments;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4, enquirer_1.prompt(questions)];
+            case 0: return [4, utils_1.askQuestion('What is your github personal access token?')];
             case 1:
-                answers = _a.sent();
-                console.log('\x1b[1m%s', "Great, working with " + answers.owner + "/" + answers.name + "...");
-                api_1.default.setToken(answers.token);
-                api_1.default.setRepository({ owner: answers.owner, name: answers.name });
+                token = _a.sent();
+                return [4, utils_1.askQuestion('What is your repo owner?')];
+            case 2:
+                owner = _a.sent();
+                return [4, utils_1.askQuestion('Well, what is your repo name?')];
+            case 3:
+                name = _a.sent();
+                console.log('\x1b[1m%s', "Great, working with " + owner + "/" + name + "...\u001B[37m");
+                api_1.default.setToken(token);
+                api_1.default.setRepository({ owner: owner, name: name });
                 api_1.default.createInstance();
                 deployments = new deployments_1.default();
                 return [4, deployments.fetchFromAPI()];
-            case 2:
+            case 4:
                 _a.sent();
                 return [4, deployments.deleteAll()];
-            case 3:
+            case 5:
                 _a.sent();
-                console.log('\x1b[1m%s', "Done. \uD83C\uDF89");
+                console.log('\x1b[1m%s', "Done. \uD83C\uDF89\u001B[37m");
                 return [2];
         }
     });
