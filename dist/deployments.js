@@ -59,12 +59,25 @@ var Deployments = (function () {
     Deployments.prototype.get = function (index) {
         return this.deployments[index];
     };
+    Deployments.prototype.count = function () {
+        return this.deployments.length;
+    };
     Deployments.prototype.deleteAll = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, Promise.all(this.deployments.map(function (deployment) { return deployment.delete(); }))];
-                    case 1: return [2, _a.sent()];
+                    case 0:
+                        if (this.count() === 0) {
+                            return [2];
+                        }
+                        return [4, Promise.all(this.deployments.map(function (data) { return data.delete(); }))];
+                    case 1:
+                        _a.sent();
+                        return [4, this.fetchFromAPI()];
+                    case 2:
+                        _a.sent();
+                        this.deleteAll();
+                        return [2];
                 }
             });
         });

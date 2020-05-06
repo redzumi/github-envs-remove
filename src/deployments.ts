@@ -20,9 +20,18 @@ export default class Deployments {
     return this.deployments[index];
   }
 
+  count() {
+    return this.deployments.length;
+  }
+
   async deleteAll() {
-    return await Promise.all(
-      this.deployments.map((deployment) => deployment.delete())
-    );
+    if (this.count() === 0) {
+      return;
+    }
+
+    await Promise.all(this.deployments.map((data) => data.delete()));
+    await this.fetchFromAPI();
+
+    this.deleteAll();
   }
 }

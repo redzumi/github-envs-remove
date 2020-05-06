@@ -61,6 +61,7 @@ var main = function () { return __awaiter(void 0, void 0, void 0, function () {
                 return [4, deployments.fetchFromAPI()];
             case 4:
                 _a.sent();
+                console.log('\x1b[1m%s', "Processing...\u001B[37m");
                 return [4, deployments.deleteAll()];
             case 5:
                 _a.sent();

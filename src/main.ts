@@ -15,8 +15,9 @@ const main = async () => {
   api.createInstance();
 
   const deployments = new Deployments();
-
   await deployments.fetchFromAPI();
+
+  console.log('\x1b[1m%s', `Processing...\x1b[37m`);
   await deployments.deleteAll();
 
   console.log('\x1b[1m%s', `Done. 🎉\x1b[37m`);
