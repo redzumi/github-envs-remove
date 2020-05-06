@@ -1,6 +1,6 @@
 {
   "name": "github-envs-remove",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/main.js",
   "description": "Remove your all github repository deployments and environments",
   "engines": {
