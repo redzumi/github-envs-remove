@@ -36,29 +36,47 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var enquirer_1 = require("enquirer");
 var api_1 = require("./api");
 var deployments_1 = require("./deployments");
-var main = function (token, repo) { return __awaiter(void 0, void 0, void 0, function () {
-    var deployments;
+var questions = [
+    {
+        type: 'input',
+        name: 'token',
+        message: 'What is your github personal access token?',
+    },
+    {
+        type: 'input',
+        name: 'owner',
+        message: 'What is your repo owner?',
+    },
+    {
+        type: 'input',
+        name: 'name',
+        message: 'Well, what is your repo name?',
+    },
+];
+var main = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var answers, deployments;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0:
-                api_1.default.setToken(token);
-                api_1.default.setRepository(repo);
+            case 0: return [4, enquirer_1.prompt(questions)];
+            case 1:
+                answers = _a.sent();
+                console.log('\x1b[1m%s', "Great, working with " + answers.owner + "/" + answers.name + "...");
+                api_1.default.setToken(answers.token);
+                api_1.default.setRepository({ owner: answers.owner, name: answers.name });
                 api_1.default.createInstance();
                 deployments = new deployments_1.default();
                 return [4, deployments.fetchFromAPI()];
-            case 1:
-                _a.sent();
-                return [4, deployments.deleteAll()];
             case 2:
                 _a.sent();
-                console.log("Done. \uD83C\uDF89");
+                return [4, deployments.deleteAll()];
+            case 3:
+                _a.sent();
+                console.log('\x1b[1m%s', "Done. \uD83C\uDF89");
                 return [2];
         }
     });
 }); };
-main('18bbca302a0220ef8622316d626b9db935dcdc1a', {
-    owner: 'redzumi',
-    name: 'project9',
-});
+main();
