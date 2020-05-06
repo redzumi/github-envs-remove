@@ -1,4 +1,7 @@
 # github-envs-remove
+[![npm version](https://badge.fury.io/js/github-envs-remove.svg)](https://badge.fury.io/js/github-envs-remove)
+[![npm version](https://david-dm.org/redzumi/github-envs-remove.svg)](https://david-dm.org/redzumi/github-envs-remove)
+
 Remove your all github repository deployments and environments
 
 ## Installation
