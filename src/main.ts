@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import api from './api';
 import Deployments from './deployments';
 import { askQuestion } from './utils';
