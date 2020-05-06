@@ -1,6 +1,6 @@
 {
   "name": "github-envs-remove",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/main.js",
   "description": "Remove your all github repository deployments and environments",
   "engines": {
@@ -10,6 +10,7 @@
     "github-envs-remove": "dist/main.js"
   },
   "scripts": {
+    "postinstall": "npm install --only=production",
     "build": "tsc",
     "watch": "tsc -w",
     "start": "node dist/main.js"
