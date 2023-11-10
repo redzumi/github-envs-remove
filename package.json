@@ -33,7 +33,7 @@
   },
   "license": "WTFPL",
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^1.6.0"
   },
   "devDependencies": {
     "@types/node": "^13.13.5",
